@@ -15,13 +15,13 @@ class DataRepository
     public function addData($title, $note, $id = false){
         if ($id) {
             $model = $this->model::find($id);
-            $model->note = htmlentities($note);
-            $model->title = htmlentities($title);
+            $model->note = $note;
+            $model->title = $title;
             $model->updated_at = date('Y-m-d', time());
         } else {
             $model = $this->model;
-            $model->note = htmlentities($note);
-            $model->title = htmlentities($title);
+            $model->note = $note;
+            $model->title = $title;
             $model->created_at = date('Y-m-d', time());
             $model->updated_at = date('Y-m-d', time());
         }

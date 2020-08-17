@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    public function register(Request $request)
+    {
+        return redirect('/');
+    }
+    public function showRegistrationForm()
+    {
+        return redirect('/');
+    }
     /*
     |--------------------------------------------------------------------------
     | Register Controller

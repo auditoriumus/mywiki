@@ -3,6 +3,8 @@
     @section('content')
         @include('forms.search')
         @include('results.results')
-        @include('forms.add')
+        @if(Auth::user()->email == 'um_2005@mail.ru')
+            @include('forms.add')
+        @endif
     @endsection
 </div>

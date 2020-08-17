@@ -12,10 +12,18 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'um_2005',
-            'email' => 'um_2005@mail.ru',
-            'password' => bcrypt('Qq12345678'),
-        ]);
+        $users = [
+            [
+                'name' => 'um_2005',
+                'email' => 'um_2005@mail.ru',
+                'password' => bcrypt('um_2005@mail.ru'),
+            ],
+            [
+                'name' => 'test',
+                'email' => 'test@test.ru',
+                'password' => bcrypt('test'),
+            ]
+        ];
+        DB::table('users')->insert($users);
     }
 }
