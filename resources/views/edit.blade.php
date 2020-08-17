@@ -11,6 +11,7 @@
             </div>
             <div class="form-group">
                 <label for="note">Заметка</label>
+                <span class="border border-secondary p-1">&amp;nbsp;</span>
                 <textarea class="form-control" id="note" name="note" rows="20">@php echo $result['note'] @endphp</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Сохранить</button>
