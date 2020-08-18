@@ -32,7 +32,7 @@ class DataRepository
     public function searchData($string){
         if(empty($string)) return false;
 
-        $words = explode(' ', trim($string));
+        $words = str_word_count(trim(mb_strtolower($string)), 1);
         $result = [];
         foreach ($words as $word) {
             $array =  $this->model
@@ -40,9 +40,13 @@ class DataRepository
                 ->orWhere('title', 'LIKE', '%' . $word . '%')
                 ->get()
                 ->toArray();
-            $result[] = $array;
+            if(!empty($array)) {
+                $result[$array[0]['id']] = $array[0];
+            } else {
+                continue;
+            }
         }
-        return $result;
+        return isset($result) ? $result : false;
     }
 
     public function getData($id){
