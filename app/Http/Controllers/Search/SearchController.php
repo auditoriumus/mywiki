@@ -26,7 +26,6 @@ class SearchController extends UserController
                 }
             }
         }
-
             $success = !empty($search_result) ? 'Показаны результаты с запросом ' . $search_word : 'По запросу ' . $search_word . ' ничего не найдено';
             return view('home', compact('search_result', 'success', 'current_path'));
         }
