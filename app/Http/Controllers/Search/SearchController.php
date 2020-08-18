@@ -16,22 +16,13 @@ class SearchController extends UserController
         } else {
             $repository = new DataRepository();
             $search_result = $repository->searchData($search_word);
-            //dd($search_result);
 
-            $total_result_array = [];
-            foreach ($search_result as $search_items) {
-                foreach ($search_items as $item) {
-                    $total_result_array[] = $item;
-                }
-            }
-            $search_result = [];
-            foreach ($total_result_array as $items) {
-                if (in_array($items, $search_result)) {
-                    continue;
-                } else {
-                    $items['note'] = preg_replace('/' . $search_word . '/', '<b>$0</b>', $items['note']);
-                    $items['title'] = preg_replace('/' . $search_word . '/', '<b>$0</b>', $items['title']);
-                    $search_result[] = $items;
+            $search_string = str_word_count($search_word, 1);
+            foreach ($search_result as $index=>$items) {
+                foreach ($search_string as $word) {
+                    $items['note'] = preg_replace('/' . $word . '/i', '<b>$0</b>', $items['note']);
+                    $items['title'] = preg_replace('/' . $word . '/i', '<b>$0</b>', $items['title']);
+                    $search_result[$index] = $items;
                 }
             }
         }
